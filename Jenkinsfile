@@ -6,6 +6,14 @@ pipeline {
 		}
 	}
 
+	environment {
+		NEXUS_VERSION = "nexus3"
+		NEXUS_PROTOCOL = "http"
+		NEXUS_URL = "192.168.67.6:8081"
+		NEXUS_REPOSITORY = "bootcamp"
+		NEXUS_CREDENTIAL_ID = "jenkins_nexus"
+	}
+
 	stages {
 		stage("Test"){
 			steps{
