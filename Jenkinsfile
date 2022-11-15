@@ -80,7 +80,14 @@ pipeline {
 				sh "docker build -t $DOCKER_IMAGE_NAME:${versionPom} ."
 				sh "docker push $DOCKER_IMAGE_NAME:${versionPom}"
 			}
-		}  
+		}
+
+		stage("Deploy to K8s") {
+			steps{
+				sh "git clone https://github.com/JuanLLorenzoG/kubernetes-helm-docker-config.git configuracion --branch demo-java"
+				sh "kubectl apply -f configuracion/kubernetes-deployments/spring-boot-app/deployment.yaml --kubeconfig=configuracion/kubernetes-config/config"
+			}
+		}
 	}
 
 	post {
