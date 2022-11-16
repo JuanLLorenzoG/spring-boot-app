@@ -18,6 +18,21 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.host.url>
+					http://sonarqube:9000
+				</sonar.host.url>
+				<sonar.Login>sqa_820be35cbc5426792aff862fe2fbb8bdee3f1f89</sonar.Login>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
