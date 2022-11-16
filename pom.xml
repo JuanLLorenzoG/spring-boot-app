@@ -28,7 +28,7 @@
 				<sonar.host.url>
 					http://localhost:9000
 				</sonar.host.url>
-				<sonar.Login>sqa_820be35cbc5426792aff862fe2fbb8bdee3f1f89</sonar.Login>
+				<sonar.login>sqa_820be35cbc5426792aff862fe2fbb8bdee3f1f89</sonar.login>
 			</properties>
 		</profile>
 	</profiles>
