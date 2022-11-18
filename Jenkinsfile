@@ -10,7 +10,7 @@ kind: Pod
 spec:
   containers:
   - name: shell
-    image: juanllorenzogomis/jenkins-nodo-js-bootcamp:1.0
+    image: juanllorenzogomis/jenkins-nodo-java-bootcamp:1.0
     command:
     - sleep
     args:
