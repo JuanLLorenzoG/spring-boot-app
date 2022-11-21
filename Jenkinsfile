@@ -56,7 +56,7 @@ spec:
 			steps{
 				sh "rm -rf configuracion"
 				sh "git clone https://github.com/JuanLLorenzoG/kubernetes-helm-docker-config.git configuracion --branch test-implementation"
-				sh "kubectl apply -f configuracion/kubernetes-deployments/spring-boot-app/manifest.yaml --kubeconfig=configuracion/kubernetes-config/config"
+				sh "kubectl apply -f configuracion/kubernetes-deployment/spring-boot-app/manifest.yaml -n default --kubeconfig=configuracion/kubernetes-config/config"
 			}
 		}
 	}
