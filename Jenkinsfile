@@ -1,48 +1,29 @@
 def versionPom = "1.0"
 pipeline {
 
-
     agent {
         kubernetes {
             yaml '''
 apiVersion: v1
-kind: Deployment
-metadata:
-  name: spring-boot-app
-  labels:
-    app: spring-boot-app
-    type: back-end
+kind: Pod
 spec:
-  template:
-    metadata:
-      name: spring-boot-app
-      labels:
-        app: spring-boot
-        type: back-end
-    spec: 
-      containers:
-      - name: spring-boot-app
-        image: juanllorenzogomis/jenkins-nodo-java-bootcamp:1.0
-        imagePullPolicy: Always
-        volumeMounts:
-        - mountPath: /var/run/docker.sock
-          name: docker-socket-volume
-        securityContext:
-          privileged: true
-      volumes:
-      - name: docker-socket-volume
-        hostPath:
-          path: /var/run/docker.sock
-          type: Socket
-        command:
-      - sleep
-      args:
-      - infinity
-  replicas: 1
-  selector:
-    matchLabels:
-      app: spring-boot
-      type: back-end
+  containers:
+  - name: spring-boot-app
+    image: juanllorenzogomis/jenkins-nodo-java-bootcamp:1.0
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-socket-volume
+    securityContext:
+      privileged: true
+  volumes:
+  - name: docker-socket-volume
+    hostPath:
+      path: /var/run/docker.sock
+      type: Socket
+    command:
+    - sleep
+    args:
+    - infinity
 '''
             defaultContainer 'spring-boot-app'
         }
