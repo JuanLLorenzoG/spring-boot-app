@@ -24,6 +24,20 @@ spec:
       - name: spring-boot-app
         image: "juanllorenzogomis/jenkins-nodo-java-bootcamp:1.0"
         imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /var/run/docker.sock
+          name: docker-socket-volume
+        securityContext:
+          privileged: true
+      volumes:
+      - name: docker-socket-volume
+        hostPath:
+          path: /var/run/docker.sock
+          type: Socket
+        command:
+      - sleep
+      args:
+      - infinity
   replicas: 1
   selector:
     matchLabels:
@@ -60,7 +74,7 @@ spec:
 		stage("Deploy to K8s") {
 			steps{
 				sh "rm -rf configuracion"
-				sh "git clone https://github.com/JuanLLorenzoG/kubernetes-helm-docker-config.git configuracion --branch demo-java"
+				sh "git clone https://github.com/JuanLLorenzoG/kubernetes-helm-docker-config.git configuracion --branch test-implementation"
 				sh "kubectl apply -f configuracion/kubernetes-deployments/spring-boot-app/deployment.yaml --kubeconfig=configuracion/kubernetes-config/config"
 			}
 		}
