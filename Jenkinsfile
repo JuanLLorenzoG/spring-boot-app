@@ -6,17 +6,31 @@ pipeline {
         kubernetes {
             yaml '''
 apiVersion: v1
-kind: Pod
+kind: Deployment
+metadata:
+  name: spring-boot-app
+  labels:
+    app: spring-boot-app
+    type: back-end
 spec:
-  containers:
-  - name: shell
-    image: juanllorenzogomis/jenkins-nodo-java-bootcamp:1.0
-    command:
-    - sleep
-    args:
-    - infinity
+  template:
+    metadata:
+      name: spring-boot-app
+      labels:
+        app: spring-boot
+        type: back-end
+    spec: 
+      containers:
+      - name: spring-boot-app
+        image: "juanllorenzogomis/jenkins-nodo-java-bootcamp:1.0"
+        imagePullPolicy: Always
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot
+      type: back-end
 '''
-            defaultContainer 'shell'
+            defaultContainer 'spring-boot-app'
         }
     }
 
