@@ -22,7 +22,7 @@ spec:
     spec: 
       containers:
       - name: spring-boot-app
-        image: "juanllorenzogomis/jenkins-nodo-java-bootcamp:1.0"
+        image: juanllorenzogomis/jenkins-nodo-java-bootcamp:1.0
         imagePullPolicy: Always
         volumeMounts:
         - mountPath: /var/run/docker.sock
