@@ -38,7 +38,7 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">silver-badgers-drum-213-0-57-163.loca.lt</stringProp>
+          <stringProp name="HTTPSampler.domain">olive-ghosts-pull-213-0-57-163.loca.lt</stringProp>
           <stringProp name="HTTPSampler.port">80</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
